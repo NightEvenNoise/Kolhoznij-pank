@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://unnamed.jpg" type="Texture" id=1]
+[ext_resource path="res://tracktor.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://sky.jpg" type="Texture" id=3]
+[ext_resource path="res://1596876725126.png" type="Texture" id=4]
+[ext_resource path="res://1596876710111.png" type="Texture" id=5]
+[ext_resource path="res://sektor gaza.ogg" type="AudioStream" id=6]
+[ext_resource path="res://new game.gd" type="Script" id=7]
+[ext_resource path="res://exit.gd" type="Script" id=8]
+[ext_resource path="res://1617638103600.png" type="Texture" id=9]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 5, 5, 1 )
+
+[sub_resource type="CylinderMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[sub_resource type="PanoramaSky" id=5]
+panorama = ExtResource( 3 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="grass" type="MeshInstance" parent="."]
+transform = Transform( 12.0303, 0, 0, 0, 12.0303, 0, 0, 0, 12.0303, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="tracktor" type="MeshInstance" parent="."]
+transform = Transform( 0.678056, 0, 0.307622, 0, 0.744574, 0, -0.307622, 0, 0.678056, -0.826917, 0.918634, -0.190158 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+
+[node name="wheel" type="MeshInstance" parent="."]
+transform = Transform( 1.48797, 0, 0, 0, -0.38854, 0, 0, 0, 1.48797, 2.73729, 0.335891, -1.48746 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="wheel2" type="MeshInstance" parent="."]
+transform = Transform( 0.447087, -0.110647, -0.153331, -0.436666, -0.120306, 0, 0.111289, -0.0275422, 0.615986, 1.85364, 0.335891, 2.67315 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.571261, -0.0969055, 0.815028, 0.0556201, 0.995294, 0.0793541, -0.818882, -5.06049e-09, 0.573962, 9.31036, 3.65786, 6.54966 )
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.572444, -0.205623, 0.793742, -0.0189429, 0.96447, 0.263513, -0.819725, -0.165882, 0.54821, 6.47358, 3.38048, 5.59197 )
+
+[node name="new game" type="TextureButton" parent="."]
+anchor_top = 0.318
+anchor_right = 0.329
+anchor_bottom = 0.675
+margin_left = 3.0
+margin_top = 0.199982
+margin_right = 0.103973
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="TextureButton" parent="."]
+anchor_left = 0.019
+anchor_top = 0.5
+anchor_right = 0.271
+anchor_bottom = 0.79
+margin_left = -0.185432
+margin_top = 19.1079
+margin_right = -0.233459
+margin_bottom = 0.10791
+texture_normal = ExtResource( 4 )
+expand = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="logo" type="TextureRect" parent="."]
+anchor_left = 0.395
+anchor_top = 0.151
+anchor_right = 0.972
+anchor_bottom = 0.414
+margin_left = -0.262848
+margin_top = -0.194275
+margin_right = -0.110901
+margin_bottom = 0.00570679
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
